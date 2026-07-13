@@ -4,10 +4,10 @@ from __future__ import annotations
 class Animal:
     alive: list[Animal] = []
 
-    def __init__(self, name: str) -> None:
+    def __init__(self, name: str, health: int) -> None:
         self.name = name
         self.hidden = False
-        self.health = 100
+        self.health = health
         Animal.alive.append(self)
 
     def __repr__(self) -> str:
