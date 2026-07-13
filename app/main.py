@@ -1,3 +1,6 @@
+from __future__ import annotations
+
+
 class Animal:
     alive = []
 
@@ -14,6 +17,10 @@ class Animal:
             f"Hidden: {self.hidden}}}"
         )
 
+    @staticmethod
+    def remove_dead(target: Animal) -> None:
+        if target.health <= 0 and target in Animal.alive:
+            Animal.alive.remove(target)
 
 class Herbivore(Animal):
     def hide(self) -> None:
@@ -27,5 +34,4 @@ class Carnivore(Animal):
             and not target.hidden
         ):
             target.health -= 50
-            if target.health <= 0:
-                Animal.alive.remove(target)
+            Animal.remove_dead(target)
